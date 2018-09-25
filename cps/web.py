@@ -3361,8 +3361,9 @@ def edit_book(book_id):
         flash(_(u"Error opening eBook. File does not exist or file is not accessible"), category="error")
         return redirect(url_for("index"))
 
-    for indx in range(0, len(book.languages)):
-        book.languages[indx].language_name = language_table[get_locale()][book.languages[indx].lang_code]
+    # print(book.languages)
+    # for indx in range(0, len(book.languages)):
+    #     book.languages[indx].language_name = language_table[get_locale()][book.languages[indx].lang_code]
     for authr in book.authors:
         author_names.append(authr.name.replace('|', ','))
 
