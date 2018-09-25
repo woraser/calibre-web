@@ -3517,7 +3517,11 @@ def edit_book(book_id):
 
             # Handle book tags
             input_tags = to_save["tags"].split(',')
-            input_tags = list(map(lambda it: it.strip(), input_tags))
+            input_tags = list(map(lambda it: it.strip().lower(), input_tags))
+            # remove repeat tags
+            if input_tags and len(input_tags) > 0:
+                input_tags = list(set(input_tags))
+                pass
             modify_database_object(input_tags, book.tags, db.Tags, db.session, 'tags')
 
             # Handle book series
